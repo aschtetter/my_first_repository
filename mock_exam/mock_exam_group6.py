@@ -1,8 +1,7 @@
 from pyqgis_scripting_ext.core import *
 
-
-file = "C:/users/aschw/OneDrive - Scientific Network South Tyrol/00_advanced_geomatics/22yr_T10MN"
-folder = "C:/users/aschw/OneDrive - Scientific Network South Tyrol/00_advanced_geomatics/"
+folder = "C:/github/my_first_repository/"
+file = f"{folder}mock_exam/22yr_T10MN"
 
 geopackagePath = folder + "natural_earth_vector.gpkg"
 countriesName = "ne_50m_admin_0_countries"
@@ -39,7 +38,7 @@ canvas.set_layers([osm])
 segments = {}
 segment_list = []
 
-for country in countries:
+for country in countries[:10]:
 
     nameIndex = countriesLayer.field_index("NAME")
     countriesFeatures = countriesLayer.features()
@@ -75,7 +74,7 @@ for country in countries:
             segment_list.append(polygon)
 
 
-#segmentation of the segments
+# Segmentation of the segments
 
 steps = (max(segments.values()) - min(segments.values()))/ len(colors)
 
